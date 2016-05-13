@@ -9,6 +9,7 @@ import './PlotContainer.styl';
 
 export default class PlotContainer extends Component {
   static propTypes = {
+    done: PropTypes.bool.isRequired,
     currentId: PropTypes.number.isRequired,
     nodes: PropTypes.array.isRequired,
     visitOrder: PropTypes.array.isRequired,
@@ -35,58 +36,39 @@ export default class PlotContainer extends Component {
 
     let svg = d3.select('.PlotContainer')
       .append('svg')
+      .classed('done', self.props.done)
       .on('click', function() { // We need this context, cant use ES6 anonymous function
+        if (d3.event.defaultPrevented) return;
         let coords = d3.mouse(this);
         self.props.addNode(coords[0], coords[1]);
       });
 
+    let defs = svg.append('defs');
+
+    defs.append('marker')
+    .attr('id', 'arrowhead')
+    .attr('class', 'ArrowHead')
+    .attr('refX', 22) /*must be smarter way to calculate shift*/
+    .attr('refY', 4)
+    .attr('markerWidth', 12)
+    .attr('markerHeight', 8)
+    .attr('orient', 'auto')
+    .append('path')
+      .attr('d', 'M 0,0 V 8 L12,4 Z'); //this is actual shape for arrowhead
+
+    defs.append('marker')
+    .attr('id', 'arrowhead-traversed')
+    .attr('class', 'ArrowHead traversed')
+    .attr('refX', 22) /*must be smarter way to calculate shift*/
+    .attr('refY', 4)
+    .attr('markerWidth', 12)
+    .attr('markerHeight', 8)
+    .attr('orient', 'auto')
+    .append('path')
+      .attr('d', 'M 0,0 V 8 L12,4 Z'); //this is actual shape for arrowhead
+
     this.props.nodes.forEach(this.drawEdges.bind(this));
     this.props.nodes.forEach(this.drawNode.bind(this));
-  }
-
-  clickNode(id) {
-    let self = this;
-    return () => {
-      d3.event.stopPropagation();
-      let nodes = self.props.nodes;
-      let newNodes;
-
-      if (nodes.filter((n) => n.selected).length === 1) {
-        let parent = nodes.find((n) => n.selected);
-        let child = nodes.find((n) => n.id === id);
-
-        if (parent.id === child.id) {
-          newNodes = nodes.map((n) => {
-            n.selected = false;
-            return n;
-          });
-        } else {
-          newNodes = nodes.map((n) => {
-            if (n.id === parent.id) {
-              n.selected = false;
-              if (n.children.filter((c) => c === child.id).length === 0) {
-                n.children.push(child.id);
-              }
-              
-            }
-
-            if (n.id === child.id) {
-              n.selected = true;
-            }
-            return n;
-          });
-        }
-      } else {
-        newNodes = self.props.nodes.map((n) => {
-          if (n.id === id) {
-            n.selected = !n.selected;
-          }
-          return n;
-        });
-      }
-
-      this.props.updateNodes(newNodes);
-    };
   }
 
   drawEdges(node) {
@@ -96,20 +78,58 @@ export default class PlotContainer extends Component {
     node.children.forEach((childId) => {
       let child = self.props.nodes.find((n) => n.id === childId);
 
+      var markerId = (child.visitedFrom === node.id) ? '#arrowhead-traversed': '#arrowhead';
+
+
       svg.append('line')
-        .attr('class', 'edge')
+        .attr('class', 'Edge')
+        .attr('marker-end', `url(${markerId})`)
         .attr('x1', node.x)
         .attr('y1', node.y)
         .attr('x2', child.x)
-        .attr('y2', child.y);
+        .attr('y2', child.y)
+        .classed('traversed', (child.visitedFrom === node.id));
     });
   }
 
   drawNode(node) {
     let self = this;
+    
     let svg = d3.select('.PlotContainer svg');
 
-    svg.append('circle')
+    let drag = d3.behavior.drag()
+      .on('dragstart', function(d) {
+        self.props.updateNodes(self.props.nodes.map((n) => {
+          if (n.id === node.id) {
+            n.selected = true;
+          }
+
+          return n;
+        }));
+      })
+      .on('dragend', function(d) {
+        d3.event.sourceEvent.stopPropagation();
+        
+        let { offsetX: x, offsetY: y } = d3.event.sourceEvent;
+        let connect = self.props.nodes.find((node) => {
+          return (
+            Math.abs(node.x - x) < node.size &&
+            Math.abs(node.y - y) < node.size);
+        });
+
+        if (connect && connect.id !== node.id && node.children.filter((c) => c === connect.id).length === 0) {
+          self.props.updateNodes(self.props.nodes.map((n) => {
+            if (n.id === node.id) {
+              n.selected = false;
+              n.children.push(connect.id);
+            }
+
+            return n;
+          }));
+        }
+      });
+
+    let nodeElem = svg.append('circle')
       .attr('class', 'Node')
       .attr('id', 'node-'+node.id)
       .attr('cx', node.x)
@@ -118,13 +138,13 @@ export default class PlotContainer extends Component {
       .classed('selected', node.selected)
       .classed('visited', node.visited)
       .classed('current', node.current)
-      .on('click', self.clickNode(node.id))
       .on('mouseover', function() {
         d3.select(this).classed('hover', true);
       })
       .on('mouseout', function() {
         d3.select(this).classed('hover', false);
-      });
+      })
+      .call(drag);
 
     svg.append('text')
       .attr('class', 'Node-label')

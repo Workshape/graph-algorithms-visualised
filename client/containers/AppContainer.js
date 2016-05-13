@@ -23,6 +23,7 @@ export default class AppContainer extends Component {
     super(props, context);
     this.state = {
       running: false,
+      done: false,
       algorithm: 'DFS',
       nodes: [],
       visitOrder: [],
@@ -35,10 +36,10 @@ export default class AppContainer extends Component {
     let selectedAlgorithm = this.state.algorithm; 
     let searchAlgorithm = new ALGOS[selectedAlgorithm](this.state.nodes, this);
 
-    this.setState({running: true});
+    this.setState({running: true, done: false});
 
     searchAlgorithm.start()
-    .then(() => this.setState({ running: false }))
+    .then(() => this.setState({ running: false, done: true }))
     .catch((e) => {
       this.setState({ running: false });
       console.error(e);
@@ -72,6 +73,7 @@ export default class AppContainer extends Component {
     update.forEach((x) => {
       x.visited = false;
       x.current = false;
+      x.visitedFrom = null;
     });
 
     this.setState({
@@ -111,6 +113,7 @@ export default class AppContainer extends Component {
     };
 
     let containerProps = {
+      done: this.state.done,
       currentId: this.state.currentId,
       nodes: this.state.nodes,
       visitOrder: this.state.visitOrder,

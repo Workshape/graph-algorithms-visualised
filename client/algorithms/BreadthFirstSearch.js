@@ -72,16 +72,19 @@ export default class BreadthFirstSearch {
    * 
    * @return {Promise}
    */
-  updateComponent(currentNode) {
+  updateComponent(currentNode, parentId) {
     return Promise.resolve()
     .then(() => {
-      let updateState = _.assign([], this.nodes);
-      updateState.forEach((node) => {
+      let updateState = this.nodes.map((node) => {
         node.current = (node.id === currentNode.id);
+        if (parentId && node.id === currentNode.id) {
+          node.visitedFrom = parentId;
+        }
+        return node;
       });
 
       this.component.setState({
-        nodes: _.assign([], this.nodes),
+        nodes: updateState,
         visitOrder: _.assign([], this.visitOrder)
       });
 
@@ -110,29 +113,31 @@ export default class BreadthFirstSearch {
     .then(() => {
       if (!node.visited) {
         this.log(` | Enqueued ${node.id}`);
-        this.queue.enqueue(node.id);
+        this.queue.enqueue([node.id, null]);
       }
 
       return promiseWhile(this.queue.isNotEmpty.bind(this.queue), () => {
-        let id = this.queue.dequeue();
-        let currentNode = this.nodes.find((n) => n.id === id);
+        let edge = this.queue.dequeue();
+        let currentNode = this.nodes.find((n) => n.id === edge[0]);
+        let parentId = null;
         if (!currentNode.visited) {
+          parentId = edge[1];
           this.markAsVisited(currentNode);
+          this.enqueueUnvisitedChildren(currentNode);
         }
-        this.enqueueUnvisitedChildren(currentNode);
-        return this.updateComponent(currentNode);
+        
+        return this.updateComponent(currentNode, parentId);
       });
     });
   }
 
-  enqueueUnvisitedChildren(node) {
-    let sortedChildren = this.sortChildren(node);
+  enqueueUnvisitedChildren(parent) {
+    let sortedChildren = this.sortChildren(parent);
     sortedChildren.forEach((childId) => {
-      console.log('enqueueChild', this);
       let node = this.nodes.find((n) => n.id === childId);
       if (!node.visited) {
         this.log(` | Enqueued ${node.id}`);
-        this.queue.enqueue(node.id);
+        this.queue.enqueue([node.id, parent.id]);
       }
     });
   }

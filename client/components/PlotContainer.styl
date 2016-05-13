@@ -11,8 +11,22 @@
       border solid 1px color-grey
       background-color color-white
       
+      &.done
+        .Edge
+          stroke lighten(color-light-blue, 10)
+          
+        .ArrowHead
+          path
+            fill lighten(color-light-blue, 10)
+            
+
+        .Node
+            fill lighten(color-light-blue, 10)
+      
       .Node
+        transition: fill .8s ease;
         fill darken(color-light-blue, 10)
+        
         
         &.selected
           stroke red
@@ -28,7 +42,18 @@
         &.hover
           stroke red
           stroke-width 2
+          cursor e-resize
       
+      .ArrowHead
+        path
+          transition: fill .8s ease;
+          fill darken(color-light-blue, 20)
+          
+      
+        &.traversed
+          path
+            fill color-grey
+
       .Node-label
         font-size 10px
         fill #cdcdcd
@@ -37,6 +62,11 @@
         font-size 10px
         fill color-red
       
-      .edge
-        stroke darken(color-light-blue, 10)
+      .Edge
+        transition: stroke .8s eae;
+        stroke darken(color-light-blue, 20)
         stroke-width 1
+        
+        
+        &.traversed
+          stroke color-grey

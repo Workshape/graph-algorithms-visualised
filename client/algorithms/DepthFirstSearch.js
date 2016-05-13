@@ -50,15 +50,11 @@ export default class DepthFirstSearch {
 
     this.log(` | Start at ${startNode.id}`);
     return this.search(startNode)
-    .then(() => {
-
-    })
     .catch((e) => {
       this.log(e.message);
       this.log(' | Search Steps');
       this.log(' | ------------');
       this.visitOrder.forEach((node, id) => this.log(` | Step ${id+1} -> Node ${node.id}`) );
-      
     });
   }
 
@@ -70,15 +66,23 @@ export default class DepthFirstSearch {
    * 
    * @return {Promise}
    */
-  updateComponent(currentNode) {
+  updateComponent(currentNode, parentNode) {
     return Promise.resolve()
     .then(() => {
-      let updateState = _.assign([], this.nodes);
-      updateState.forEach((node) => {
-        node.current = (node.id === currentNode.id);
+      let updateState = this.nodes.map((node) => {
+        if (node.id === currentNode.id) {
+          node.current = true;
+          if (parentNode) {
+            node.visitedFrom = parentNode.id;
+          }
+        } else {
+          node.current = false;
+        }
+
+        return node;
       });
       this.component.setState({
-        nodes: _.assign([], this.nodes),
+        nodes: updateState,
         visitOrder: _.assign([], this.visitOrder)
       });
 
@@ -98,12 +102,15 @@ export default class DepthFirstSearch {
    * 
    * @return {Promise}
    */
-  search(node) {
+  search(node, parent) {
+    if (parent) {
+      console.log('Parent set', 'parent is', parent.id, 'child is', node.id);
+    }
     if (!node) {
       return;
     }
 
-    return this.updateComponent(node)
+    return this.updateComponent(node, parent)
     .then(() => {
       if (!node.visited) {
         this.markAsVisited(node);
@@ -151,7 +158,8 @@ export default class DepthFirstSearch {
    */
   moveToNextChild() {
     this.log(' | Move Down!');
-    let sortedChildren = this.sortChildren(this.peek());
+    let parent = this.peek();
+    let sortedChildren = this.sortChildren(parent);
 
     let unvisitedChildren = sortedChildren.filter((x) =>  {
       let node = this.nodes.find((n) => n.id === x);
@@ -163,7 +171,7 @@ export default class DepthFirstSearch {
     } else {
       let nextId = unvisitedChildren.pop();
       let next = this.nodes.find((x) => x.id === nextId);
-      return this.search(next);
+      return this.search(next, parent);
     }
   }
 

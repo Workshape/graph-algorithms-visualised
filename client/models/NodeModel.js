@@ -6,15 +6,12 @@ export default class Node {
     this.size = 10;
     this.selected = false;
     this.visited = false;
+    this.visitedFrom = null;
     this.current = false;
     this.children = [];
   };
 
   hasChildren() {
     return this.children && this.children.length > 0;
-  }
-
-  allChildrenVisited(node) {
-    return this.children.reduce((reduction, child) => reduction && child.visited, true);
   }
 }
