@@ -1,0 +1,30 @@
+@import '../../style/variables.styl'
+
+.PlotHeader
+  padding 1vh 5vw
+  display flex
+  justify-content space-between
+  width 100vw
+  height 40px
+  background-color alpha(color-black, 0.2)
+  border-bottom 1px solid color-grey
+  
+  h1, form
+    display inline-block
+  
+  h1
+    color color-black
+    
+  label, button, select
+    margin 0px 0px 10px 10px
+  
+  button
+    
+    &.button-disabled
+      background-color color-grey
+    
+    &.button-primary
+      background-color darken(color-light-blue,20)
+    
+    &.button-secondary
+      background-color lighten(color-red, 20)

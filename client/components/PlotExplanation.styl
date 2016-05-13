@@ -1,0 +1,27 @@
+@import '../../style/variables.styl'
+
+.PlotExplained
+  margin 1vh 5vw
+  max-height component-height
+  width 23vw
+  background-color color-black
+  color #ccc
+  font-family 'Source Code Pro', sans-serif
+  overflow hidden
+  
+  h2
+    width 100%
+    padding 10px 0
+    background-color lighten(color-black, 20)
+  
+  ul
+    padding 1vh 1vw
+    list-style none
+    max-height inherit
+    overflow-y scroll
+    
+    li
+      font-size 0.8rem
+      
+      &:last-child
+        margin-bottom 100px

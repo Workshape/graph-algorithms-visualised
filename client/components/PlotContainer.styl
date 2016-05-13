@@ -1,0 +1,42 @@
+@import '../../style/variables.styl'
+
+.PlotContainer
+    width 55vw
+    height component-height
+    margin 1vh 5vw
+    
+    svg
+      width 100%
+      height 100%
+      border solid 1px color-grey
+      background-color color-white
+      
+      .Node
+        fill darken(color-light-blue, 10)
+        
+        &.selected
+          stroke red
+          stroke-width 1
+        
+        &.visited
+          fill color-grey
+        
+        &.current
+          fill darken(color-grey, 20)
+
+        
+        &.hover
+          stroke red
+          stroke-width 2
+      
+      .Node-label
+        font-size 10px
+        fill #cdcdcd
+      
+      .Node-visitLabel
+        font-size 10px
+        fill color-red
+      
+      .edge
+        stroke darken(color-light-blue, 10)
+        stroke-width 1
