@@ -3,7 +3,7 @@
 .PlotContainer
     width 55vw
     height component-height
-    margin 1vh 5vw
+    margin 5vh 5vw
     
     svg
       width 100%
@@ -24,12 +24,11 @@
             fill lighten(color-light-blue, 10)
       
       .Node
-        transition: fill .8s ease;
         fill darken(color-light-blue, 10)
         
         
         &.selected
-          stroke red
+          stroke darken(color-light-blue, 50)
           stroke-width 1
         
         &.visited
@@ -37,16 +36,18 @@
         
         &.current
           fill darken(color-grey, 20)
+        
+        &.articulationPoint
+          fill lighten(color-red, 20)
 
         
         &.hover
-          stroke red
+          stroke darken(color-light-blue, 50)
           stroke-width 2
           cursor e-resize
       
       .ArrowHead
         path
-          transition: fill .8s ease;
           fill darken(color-light-blue, 20)
           
       
@@ -63,10 +64,27 @@
         fill color-red
       
       .Edge
-        transition: stroke .8s eae;
         stroke darken(color-light-blue, 20)
         stroke-width 1
+        
+        &.dragging
+          stroke lighten(color-light-blue, 5)
         
         
         &.traversed
           stroke color-grey
+        
+        &:hover
+          stroke darken(color-light-blue, 50)
+      
+      .GraphComponent-circle
+        fill lighten(color-grey, 20)
+        opacity 0.4
+          
+      .GraphComponent-poly
+        stroke-width 40
+        stroke-linejoin round
+        stroke lighten(color-grey, 20)
+        fill lighten(color-grey, 20)
+        opacity 0.4
+        
