@@ -58,7 +58,7 @@ export default class ArticulationPointSearch {
       let unvisitedPoints = this.nodes.filter((n) => !n.visited);
       let articulationPoints = this.nodes.filter((n) => n.articulationPoint);
       if (unvisitedPoints.length === 0 && articulationPoints.length === 0) {
-        this.log(' | This graph is Biconnected!')
+        this.log(' | This graph is Biconnected!');
       } else {
         this.log(' | This graph is not Biconnected');
         if (articulationPoints.length > 0) {
@@ -134,11 +134,11 @@ export default class ArticulationPointSearch {
               node.lowLink = Math.min(node.lowLink, child.lowLink);
               
               if (node.visitedFrom === null && node.childVisitCount > 1) {
-                this.log(` | Node is root and has more than one child - it's an articulation point!`);
+                this.log(' | Node is root and has more than one child - it\'s an articulation point!');
                 node.articulationPoint = true;
               } else if (node.visitedFrom !== null && child.lowLink >= node.visitIndex) {
-                this.log(` | Node ${node.id} - parent ${node.visitedFrom}`)
-                this.log(` | Node is not root but one of it's children has a back link to an ancestor - it's an articulation point!`);
+                this.log(` | Node ${node.id} - parent ${node.visitedFrom}`);
+                this.log(' | Node is not root but one of it\'s children has a back link to an ancestor - it\'s an articulation point!');
                 node.articulationPoint = true;
               }
             });
