@@ -2,6 +2,7 @@ import _ from 'lodash';
 import Promise from 'bluebird';
 
 import { promiseSequence } from '../utils';
+import Stack from '../dataStructures/Stack';
 
 /**
  * Tarjan Strongly Connected Components Graph Algorithm Class
@@ -17,8 +18,8 @@ export default class TarjanStrongConnection {
   constructor(nodes, component, pause = 500) {
     this.nodes = nodes;
     this.component = component;
-    this.index = 0;
-    this.stack = [];
+    this.visitIndex = 0;
+    this.stack = new Stack();
     this.visitOrder = [];
     this.explanation = [];
     this.components = [];
@@ -114,7 +115,7 @@ export default class TarjanStrongConnection {
       return Promise.resolve();
     }
 
-    if (node.index !== null) {
+    if (node.visitIndex !== null) {
       return Promise.resolve();
     }
 
@@ -124,7 +125,7 @@ export default class TarjanStrongConnection {
 
       let childTasks = node.children.map((childId) => {
         let child = this.nodes.find((x) => x.id === childId);
-        if (child.index === null) {
+        if (child.visitIndex === null) {
           return () => {
             return this.search(child, node).then(() => {
               let updatedChild = this.nodes.find((x) => x.id === childId);
@@ -134,7 +135,7 @@ export default class TarjanStrongConnection {
           };
         } else if (child.onStack) {
           return () => {
-            node.lowLink = Math.min(node.lowLink, child.lowLink);
+            node.lowLink = Math.min(node.lowLink, child.visitIndex);
             return Promise.resolve();
           };
         } else {
@@ -146,14 +147,18 @@ export default class TarjanStrongConnection {
 
       return promiseSequence(childTasks)
       .then(() => {
-        if (node.lowLink === node.index) {
+        if (node.lowLink === node.visitIndex) {
+          console.log('root node');
+          console.log(node);
           let component = [ node.id ];
           let otherNodeId = this.stack.pop();
+          let otherNode = this.nodes.find((x) => x.id === otherNodeId);
+          otherNode.onStack = false;
           while (otherNodeId !== node.id) {
-            let otherNode = this.nodes.find((x) => x.id === otherNodeId);
-            otherNode.onStack = false;
             component.push(otherNode.id);
             otherNodeId = this.stack.pop();
+            otherNode = this.nodes.find((x) => x.id === otherNodeId);
+            otherNode.onStack = false;
           }
           this.components.push(component);
           return Promise.resolve();
@@ -170,10 +175,10 @@ export default class TarjanStrongConnection {
   markAsVisited(node) {
     this.log(` | Visit ${node.id}`);
     node.visited = true;
-    node.index = this.index;
-    node.lowLink = this.index;
+    node.visitIndex = this.visitIndex;
+    node.lowLink = this.visitIndex;
     node.onStack = true;
-    this.index++;
+    this.visitIndex++;
     this.stack.push(node.id);
     this.visitOrder.push(node);
   }

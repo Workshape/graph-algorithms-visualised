@@ -1,18 +1,23 @@
 export default class Node {
-  constructor(id, x, y) {
+  constructor(id, x, y, children, parents) {
     this.id = id;
     this.x = x;
     this.y = y;
+    this.children = children || [];
+    this.parents = parents || [];
+
     this.size = 10;
     this.selected = false;
+    this.current = false;
+
     this.visited = false;
     this.visitIndex = null;
     this.visitedFrom = null;
-    this.index = null;
+
     this.articulationPoint = false;
     this.lowLink = null;
-    this.current = false;
-    this.children = [];
+    this.group = null;
+    
     this.childVisitCount = 0;
   };
 
@@ -22,12 +27,12 @@ export default class Node {
 
   reset() {
     this.visited = false;
-    this.index = null;
     this.lowLink = null;
     this.current = false;
     this.visitedFrom = null;
     this.visitIndex =null;
     this.articulationPoint = false;
     this.childVisitCount = 0;
+    this.group = null;
   }
 }
