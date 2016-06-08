@@ -148,8 +148,6 @@ export default class TarjanStrongConnection {
       return promiseSequence(childTasks)
       .then(() => {
         if (node.lowLink === node.visitIndex) {
-          console.log('root node');
-          console.log(node);
           let component = [ node.id ];
           let otherNodeId = this.stack.pop();
           let otherNode = this.nodes.find((x) => x.id === otherNodeId);
