@@ -96,6 +96,11 @@ export default class PlotContainer extends Component {
     }
     this.props.nodes.forEach(this.drawEdges.bind(this));
     this.props.nodes.forEach(this.drawNode.bind(this));
+
+    this.props.nodes.forEach((n) => {
+      //console.log('Node', n.id, 'Index', n.visitIndex, 'Low Link', n.lowLink);
+      //console.log(`  new NodeModel(${n.id}, ${n.x}, ${n.y}, [${n.children}], [${n.parents}]),`);
+    });
   }
 
   drawComponent(component) {
@@ -137,7 +142,8 @@ export default class PlotContainer extends Component {
         .attr('y1', node.y)
         .attr('x2', child.x)
         .attr('y2', child.y)
-        .classed('traversed', (child.visitedFrom === node.id));
+        .classed('traversed', (child.visitedFrom === node.id))
+        .classed('not-traversed', (child.visited && child.visitedFrom !== node.id));
     });
   }
 
@@ -190,10 +196,16 @@ export default class PlotContainer extends Component {
             if (n.id === node.id) {
               n.selected = false;
               n.children.push(connect.id);
+              if (self.props.graphType === 'undirected') {
+                n.parents.push(connect.id);
+              }
             }
 
-            if (self.props.graphType === 'undirected' && n.id === connect.id) {
-              n.children.push(node.id);
+            if (n.id === connect.id) {
+              n.parents.push(node.id);
+              if (self.props.graphType === 'undirected') {
+                n.children.push(node.id);
+              }
             }
 
             return n;
@@ -211,6 +223,11 @@ export default class PlotContainer extends Component {
       .classed('visited', node.visited)
       .classed('articulationPoint', node.articulationPoint)
       .classed('current', node.current)
+      .classed('group-1', node.group === 1)
+      .classed('group-2', node.group === 2)
+      .classed('group-3', node.group === 3)
+      .classed('group-4', node.group === 4)
+      .classed('group-5', node.group === 5)
       .on('mouseover', function() {
         d3.select(this).classed('hover', true);
       })

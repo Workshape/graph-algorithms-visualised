@@ -2,15 +2,47 @@
 
 .BlogContainer
   display block
-  max-width 1200px
+  max-width 1100px
   margin: 50px auto
   font-family: 'Libre Baskerville', serif;
   
   h1,h2,h3
     display block
+    margin-top 40px
     margin-bottom 40px
   
   p
     display block
     margin 40px 0
-    line-height 1.8rem
+    line-height 2rem
+    
+  ol, ul
+    margin 0 30px 30px
+    li 
+      margin-bottom 18px
+      line-height 2rem
+      a
+        color black
+        
+        &:hover
+          color lighten(black, 20)
+  
+  code
+    display block
+    border-radius 4px
+    border 1px color-light-grey solid 
+    background-color lighten(color-light-grey, 5)
+    line-height 1.5rem
+    margin 20px
+    padding 20px
+          
+  @media screen and (max-width: breakpoint-large)
+    width 92vw
+  
+  @media screen and (max-width: breakpoint-small)
+    code
+      font-size 0.8rem
+  
+  @media screen and (max-width: breakpoint-tiny)
+    code
+      font-size 0.7rem

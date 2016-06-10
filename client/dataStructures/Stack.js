@@ -20,11 +20,14 @@ export default class Stack {
     if (!this.internal || this.internal.length === 0) {
       throw new Error('Empty Stack');
     }
-    
-    return this.internal.pop();
+
+    let pop = this.internal.pop();
+    console.log('Stack popped', this.internal, pop);
+    return pop;
   }
 
   push(value) {
     this.internal.push(value);
+    console.log('Stack pushed', this.internal, value);
   }
 }

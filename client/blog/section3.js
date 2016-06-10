@@ -1,16 +1,36 @@
 import React from 'react';
 
 export default (<div>
-      <h2>Thank you</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus augue, bibendum a lectus eget, convallis volutpat magna. 
-      Donec hendrerit luctus imperdiet. Nulla orci nunc, tempor sed hendrerit a, egestas ut augue. Aenean maximus, nunc quis suscipit 
-      lobortis, nisi arcu vulputate diam, ac auctor lacus tellus ut odio. Sed placerat elementum massa sed placerat. Mauris elit justo, 
-      efficitur eu ipsum eu, scelerisque dapibus nunc. Donec pellentesque ullamcorper dictum. Sed ut eleifend elit. Vivamus ex purus, 
-      volutpat accumsan ante quis, pellentesque tempor turpis.</p>
-      <p>Maecenas euismod ultrices venenatis. Ut pharetra ante sed elementum mattis. Praesent et sodales justo. Quisque venenatis pharetra 
-      massa, in interdum turpis euismod non. Praesent rhoncus elit eget mi sagittis aliquet. Phasellus tellus metus, maximus at scelerisque 
-      in, vulputate id metus. Pellentesque eros ipsum, tempus eget tortor vel, malesuada aliquet odio. Aenean id augue id ligula eleifend 
-      pulvinar nec a diam. Vestibulum tincidunt vehicula porta. Phasellus rutrum rhoncus nunc quis viverra. Curabitur tellus ex, suscipit 
-      eu sem eu, mollis mollis risus. Duis sit amet aliquet arcu. Aliquam lacinia feugiat luctus. Maecenas iaculis dui ac augue semper, a 
-      commodo massa efficitur. Aliquam dapibus ipsum vitae vulputate fringilla. In scelerisque mauris ut ex sodales iaculis.</p>
+      <p>You can see in the visualisation after the algorithm completes the edges that the algorithm traversed in order to first <strong>visit</strong> a node.
+      It is important to take note of this when comparing to Breadth First Search. The visit index of each node is labelled in red.</p>
+
+      <h3>Pseudocode</h3>
+      <p>This pseudocode encapsulates the main principle of DFS using a stack to keep track of the current position in the search
+      process and recursive function calls visit all reachable nodes.</p>
+      <code>
+            function <strong>dfs</strong>( graph, node )<br/>
+            &nbsp;&nbsp;stack = new Stack()<br/>
+            &nbsp;&nbsp;search(node)<br/>
+            <br/>
+            &nbsp;&nbsp;function search( node )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ( !node )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ( !node.visited )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.push( node )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node.visited = true<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ( graph.nodeHasUnvisitedChildren( node ) )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search( graph.nextUnvisitedChildOf( node ) )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search( stack.pop() )<br/>
+      </code>
+
+      <p>The additional functionality in the visualisation for tracking the order in which each node is visited is omitted.</p>
+
+      <h2>Breadth First Search</h2>
+
+      <p>Whilst DFS goes as deep as possible until it reaches a dead end and then back tracks BFS queues up all nodes reachable at a certain depth 
+      and then increases the depth until all nodes are visited. Check out the visualisation below, the same example graph is loaded, pay attention
+      to the different visit order and edges traversed by each algorithm.</p>
 </div>);

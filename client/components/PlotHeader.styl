@@ -18,11 +18,7 @@
     font-size 1.7rem
     
   label, button, select
-    margin 0px 6px 10px 6px
-    
-  label
-    line-height 40px
-    vertical-align center
+    margin 4px 6px 10px 6px
     font-size 0.9rem
   
   button
@@ -35,3 +31,38 @@
     
     &.button-secondary
       background-color lighten(color-red, 20)
+      
+  @media screen and (max-width: breakpoint-large)
+    h1
+      margin-top 8px
+      font-size 1.3rem
+    label, button, select
+      margin 6px 6px 10px 6px
+      font-size 0.8rem
+  
+  @media screen and (max-width: breakpoint-medium)
+    h1
+      margin-top 9px
+      font-size 1.1rem
+    label, button, select
+      font-size 0.7rem
+      
+    select.example-graph, label.example-graph
+      display none
+  
+  @media screen and (max-width: breakpoint-small)
+    h1
+      margin-top 11px
+      font-size 0.9rem
+      
+    label, button, select
+      font-size 0.6rem
+      
+  @media screen and (max-width: breakpoint-tiny)
+    h1
+      font-size 0.8rem
+    select.start-node, label.start-node, label.algorithm
+      display none
+  
+
+    
