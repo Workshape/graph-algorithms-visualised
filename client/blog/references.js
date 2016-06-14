@@ -1,10 +1,53 @@
 import React from 'react';
 
 export default (<div>
-      <h2>Motivations</h2>
+      <p>The real world uses of testing whether a graph is bipartite, but it is a good introduction to the topic of 
+      <a href="https://en.wikipedia.org/wiki/Graph_coloring">Graph Coloring</a>which is an interesting area of study.</p>
+
+      <h4><a name='bp-pseudocode'>>Pseudocode</a></h4>
+      <p>This algorithm, because it is an extension of BFS, uses a queue to maintain which node to visit next. For each 
+      node it assigns a color based upon the colour(s) assigned to it's parents. Once all nodes have been assigned a color
+      if we end with using 2 colours, then the graph is bipartite and its nodes can be seperated into two disjoint sets.</p>
+      <code>
+            function <strong>bipartiteness</strong>( graph )<br/>
+            &nbsp;&nbsp;queue = new Queue()<br/>
+            <br/>
+            &nbsp;&nbsp;for ( node in graph.nodesWithoutParents() )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search( node )<br/>
+            <br/>
+            &nbsp;&nbsp;return graph.groups().length == 2<br/>
+            <br/>
+            &nbsp;&nbsp;function search( node )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;queue.enqueue( node )<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;while ( !queue.empty() )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current = queue.dequeue()<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( !current.visited )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.visited = true<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for ( child in current.unvisitedChildren() )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue.enqueue( child )<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parentGroups = current.parentGroupsSet()<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( parentGroups.length == 0 )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.group = 1<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if ( parentGroups.length == 1 )<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.group = ( parentGroups[0] == 1 ) ? 2 : 1<br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.group = parentGroups[parentGroups.length - 1] + 1<br/>
+      </code>
+
+      <h2><a name='motivations'>Motivations</a></h2>
 
       <p>It's quite safe to say that there is a lot of pent up frustration towards the hiring process in the software
-      industry today [1,2,3,4]. With the plethora of pathways one can take nowadays to become a software developer
+      industry today [<a href="https://medium.com/@evnowandforever/f-you-i-quit-hiring-is-broken-bb8f3a48d324#.9ilm3a18l">1</a>
+      , <a href="https://medium.com/@raiderrobert/interviewing-developers-9920fe93fa9e#.y1vu37ea2">2</a>
+      , <a href="http://www.daedtech.com/hiring-is-broken/">3</a>
+      , <a href="https://medium.freecodecamp.com/why-is-hiring-broken-it-starts-at-the-whiteboard-34b088e5a5db#.1ztmskxdq">4</a>
+      ]. With the plethora of pathways one can take nowadays to become a software developer
       combined with how one can choose to apply themselves there is increasing chance for ambiguity when it comes to how
       to access the suitability of a candidate for a job.</p>
 
@@ -31,7 +74,7 @@ export default (<div>
 
       <p>This blog marks the beginning. I've decided to focus on the topic of graph search algorithms here. The hope is 
       that anyone that is struggling with these algorithms and their applications can gain a better understanding 
-      through running the algorithm and it's variations with their own graphs and trees. </p>
+      through running the algorithm and its variations with their own graphs and trees. </p>
 
       <p>By enabling readers to test out an algorithm with their own graph/tree structures I believe the reader can 
       learn and grok the concepts more efficiently. In many ways this reflects the intentions 
@@ -50,7 +93,10 @@ export default (<div>
             triggered by scrolling!</li>
       </ol>
 
-      <h2>References</h2>
+      <h2><a name='implementation'>Implementation</a></h2>
+      <p>For those who want to take a look at the source code, check it out on our Github. It is written using React, D3 and Bluebird (Promise implementation).</p>
+
+      <h2><a name='references'>References</a></h2>
       <ol>
             <li><a href="https://medium.com/@evnowandforever/f-you-i-quit-hiring-is-broken-bb8f3a48d324#.9ilm3a18l">F**k You, I Quit - Hiring is Broken</a></li>
             <li><a href="https://medium.com/@raiderrobert/interviewing-developers-9920fe93fa9e#.y1vu37ea2">So Hiring is Broken - Let's Fix It</a></li>
