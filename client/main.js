@@ -17,4 +17,8 @@ render(
 /**
  * We must initialise skrollr AFTER we have rendered our React application
  */
-skrollr.init();
+if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+  skrollr.init({
+      forceHeight: false
+  });
+}
