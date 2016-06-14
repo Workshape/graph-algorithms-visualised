@@ -35,25 +35,55 @@
   .Menu
     padding 20px
     width 20vw
-    height 100vh
+    height 90vh
     overflow scroll
     transition width 0.5s, margin 0.5s
     
     li
       font-size 0.9rem
+  
+  .BuiltBy
+    text-align center
+    font-weight 100
+    font-size 0.9rem
+    width 100%
+    height 10vh
+    transition height 0.5s, margin 0.5s, opacity 0.1s
+    
+    a
+      color color-workshape
+    
+    span, i
+      margin 2px
+    
+    span
+      color darken(color-grey, 15)
+      
+    i 
+      color lighten(color-red, 10)
       
   &.closed
     .Menu, 
       overflow hidden
-      margin-left -200px
-      width 0
+      margin-left -600px
+    .BuiltBy
+      opacity 0
+      margin-left -600px
   
   @media screen and (max-width breakpoint-medium)
     .Menu
       width 100vw
       transition height 0.5s, margin 0.5s, opacity 0.3s
+    
+    .BuiltBy 
+      width 100vw
 
     &.closed 
+      .BuiltBy
+        opacity 0
+        height 0
+        margin-left 0
+      
       .Menu
         height 0
         opacity 0

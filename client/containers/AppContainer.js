@@ -70,7 +70,7 @@ const sections = [
   },
   { title: 'Motivations', link: '#motivations' },
   { title: 'Implementation', link: '#implementation' },
-  { title: 'References', link: '#references' }
+  { title: 'Links', link: '#references' }
 ];
 
 export default class AppContainer extends Component {

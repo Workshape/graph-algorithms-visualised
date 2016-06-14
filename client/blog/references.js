@@ -97,11 +97,17 @@ export default (<div>
       <p>For those who want to take a look at the <a href="https://github.com/Workshape/graph-algorithms-visualised">source code</a>, 
       check it out on our Github. It is written using React, D3 and Bluebird (Promise implementation).</p>
 
-      <h2><a name='references'>References</a></h2>
+      <h2><a name='references'>Links</a></h2>
       <ol>
             <li><a href="https://medium.com/@evnowandforever/f-you-i-quit-hiring-is-broken-bb8f3a48d324#.9ilm3a18l">F**k You, I Quit - Hiring is Broken</a></li>
             <li><a href="https://medium.com/@raiderrobert/interviewing-developers-9920fe93fa9e#.y1vu37ea2">So Hiring is Broken - Let's Fix It</a></li>
             <li><a href="http://www.daedtech.com/hiring-is-broken/">Hiring is Broken... And It Isn't Worth Fixing</a></li>
             <li><a href="https://medium.freecodecamp.com/why-is-hiring-broken-it-starts-at-the-whiteboard-34b088e5a5db#.1ztmskxdq">Why is hiring broken? It starts at the whiteboard</a></li>
       </ol>
+
+      <div className='instruction'>
+            <h4>Feedback</h4>
+            <p>If you have any feedback and would like to share it, or if you see any errors please email Gordon at gordon [at] workshape [dot] io. Also, if you would be interested in
+            contributing in further content like this please do get in touch!</p>
+            </div>
 </div>);

@@ -22,6 +22,13 @@ export default class ContentsContainer extends Component {
           {this.props.sections.map((section, id) => <ContentSection key={id} {...section} />)}
         </ol>
       </div>
+      <div className='BuiltBy'>
+        <span>Made with</span>
+        <i className="fa fa-heart" aria-hidden="true"></i> 
+        <span>
+          by <a href='https://www.workshape.io'>Workshape.io</a>
+        </span>
+      </div>
     </div>;
   }
 
