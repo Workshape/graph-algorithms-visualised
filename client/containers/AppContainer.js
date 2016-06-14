@@ -11,6 +11,7 @@ import './AppContainer.styl';
 
 const sections = [
   { title: 'Top', link: '#top'},
+  { title: 'Introduction', link: '#introduction'},
   { title: 'Main Visualisation', link: '#main-visualisation'},
   { 
     title: 'Depth First Search', 

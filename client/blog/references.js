@@ -4,7 +4,7 @@ export default (<div>
       <p>The real world uses of testing whether a graph is bipartite, but it is a good introduction to the topic of 
       <a href="https://en.wikipedia.org/wiki/Graph_coloring">Graph Coloring</a>which is an interesting area of study.</p>
 
-      <h4><a name='bp-pseudocode'>>Pseudocode</a></h4>
+      <h4><a name='bp-pseudocode'>Pseudocode</a></h4>
       <p>This algorithm, because it is an extension of BFS, uses a queue to maintain which node to visit next. For each 
       node it assigns a color based upon the colour(s) assigned to it's parents. Once all nodes have been assigned a color
       if we end with using 2 colours, then the graph is bipartite and its nodes can be seperated into two disjoint sets.</p>
@@ -94,7 +94,8 @@ export default (<div>
       </ol>
 
       <h2><a name='implementation'>Implementation</a></h2>
-      <p>For those who want to take a look at the source code, check it out on our Github. It is written using React, D3 and Bluebird (Promise implementation).</p>
+      <p>For those who want to take a look at the <a href="https://github.com/Workshape/graph-algorithms-visualised">source code</a>, 
+      check it out on our Github. It is written using React, D3 and Bluebird (Promise implementation).</p>
 
       <h2><a name='references'>References</a></h2>
       <ol>
