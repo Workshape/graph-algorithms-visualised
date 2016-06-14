@@ -1,0 +1,62 @@
+@import '../../style/variables.styl'
+
+.ContentsContainer
+  position fixed
+  left 0
+  top 0
+  background-color darken(color-white, 1)
+  border-right 1px solid color-grey
+  z-index 999
+  transition all 0.5s
+  font-family 'Noto Sans', Arial, sans-serif
+  
+  .Controls
+    position relative
+    font-size 1rem
+    margin 10px
+    cursor pointer
+    padding-left 1.25em
+  
+    &:before 
+      content ""
+      position absolute
+      top 0.25em
+      left 0
+      width 1em
+      height 0.125em
+      border-top 0.375em double color-grey
+      border-bottom 0.125em solid color-grey
+    
+    &:hover
+      &:before
+        border-top 0.375em double darken(color-grey, 10)
+        border-bottom 0.125em solid darken(color-grey, 10)
+  
+  .Menu
+    padding 20px
+    width 20vw
+    height 100vh
+    overflow scroll
+    transition width 0.5s, margin 0.5s
+    
+    li
+      font-size 0.9rem
+      
+  &.closed
+    .Menu, 
+      overflow hidden
+      margin-left -200px
+      width 0
+  
+  @media screen and (max-width breakpoint-medium)
+    .Menu
+      width 100vw
+      transition height 0.5s, margin 0.5s, opacity 0.3s
+
+    &.closed 
+      .Menu
+        height 0
+        opacity 0
+        margin-left 0
+        margin-top -100px
+        width 100vw

@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var nib = require('nib');
 
 var isDev = (process.env.NODE_ENV !== 'production');
@@ -17,6 +18,7 @@ var output = {
 
 var plugins = [
   defineEnvPlugin,
+  new ExtractTextPlugin('style.css'),
   new webpack.NoErrorsPlugin()
 ];
 
@@ -28,11 +30,11 @@ var moduleLoaders = [
     include: __dirname
   }, {
     test: /\.css?$/,
-    loaders: [ 'style-loader', 'css-loader' ],
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
     include: __dirname
   }, {
     test: /\.styl?$/,
-    loaders: [ 'style-loader', 'css-loader', 'stylus-loader' ],
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader'),
     include: __dirname
   }
 ];

@@ -28,6 +28,7 @@ const ALGOS = {
 export default class AlgoVizContainer extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     selectableAlgorithms: PropTypes.array.isRequired,
     graphType: PropTypes.string,
     exampleGraph: PropTypes.string,
@@ -184,10 +185,12 @@ export default class AlgoVizContainer extends Component {
       initialiseNodes: this.initialiseNodes.bind(this)
     };
 
-    return <div className='AlgoVizContainer' data-bottom-top='opacity:0;' data-top='opacity:1;'>
+    return <a name={this.props.name}>
+      <div className='AlgoVizContainer' data-bottom-top='opacity:0;' data-top='opacity:1;'>
       <PlotHeader {...headerProps} />
       <PlotContainer {...containerProps}/>
       <PlotExplanation explanation={this.state.explanation} />
-    </div>;
+     </div>
+    </a>;
   }
 }
