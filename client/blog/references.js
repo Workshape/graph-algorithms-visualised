@@ -1,4 +1,5 @@
 import React from 'react';
+import ShareButtons from '../components/ShareButtons';
 
 export default (<div>
       <p>The real world uses of testing whether a graph is bipartite, but it is a good introduction to the topic of 
@@ -120,4 +121,6 @@ export default (<div>
           </a>
         </span>
       </div>
+
+      <ShareButtons/>
 </div>);

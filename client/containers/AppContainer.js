@@ -6,6 +6,7 @@ import cx from 'classnames';
 import BlogContainer from './BlogContainer';
 import AlgoVizContainer from './AlgoVizContainer';
 import ContentsContainer from './ContentsContainer';
+import BlogHeading from '../components/BlogHeading';
 
 import './AppContainer.styl';
 
@@ -91,21 +92,7 @@ export default class AppContainer extends Component {
   render() {
     let cssClass = this.state.menuVisible ? 'AppContainer pad-left': 'AppContainer';
     return <div className={cssClass}>
-
-      <section className='page-title'>
-
-        <div className='inner'>
-          <img src='/assets/illustration-top-white.svg' className='illustration-intro' />
-          <h1><a name='top'>A Visual Guide to<span className='bottom'>Graph Traversal Algorithms</span></a></h1>
-          <span className='made-by'>
-            By <a href='https://www.workshape.io'>
-              <img src='/assets/ws-logo-white.svg' alt='WorkShape.io' />
-            </a>
-          </span>
-        </div>
-
-      </section>
-
+      <BlogHeading/>
       <ContentsContainer sections={sections} visible={this.state.menuVisible} toggleMenu={() => this.toggleMenu()} />
       <BlogContainer sectionId={1}/>
       <AlgoVizContainer 
