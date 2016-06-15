@@ -53,13 +53,12 @@ export default (<div>
       to access the suitability of a candidate for a job.</p>
 
       <p>One of the topics that is often raised in these pieces is around some of the foundations of Computer Science -
-      namely Data Structures and Algorithms. Whilst I find myself conflicted as to the value of focussing on these
-      aspects in technical interviews I found myself wondering about how we could help people that struggle with
-      these concepts (I'd define myself as one of these people). In my opinion the delivery mechanisms used for
-      educating someone about these topics could be improved (I always used to grow frustrated how lecture slides 
-      would often rely upon singular examples to explain algorithms). Perhaps with a bit more thought to how to improve 
-      the learning experience we can help more people understand these basic concepts that are essentially the building
-      blocks for the subject of Computer Science.</p>
+      namely Data Structures and Algorithms. Whilst I am conflicted on their value in technical interviews 
+      I found myself wondering about how we could help people that struggle with these concepts - I'd put myself in this pool. 
+      In my opinion the delivery mechanisms used for educating someone about these topics are outdated and could be improved 
+      (I always used to grow frustrated how lecture slides would often rely upon singular examples to explain algorithms). 
+      Perhaps with a bit more thought to how to improve the learning experience we can help more people understand these basic concepts 
+      that are essentially the building blocks for the subject of Computer Science.</p>
 
       <p>So I decided to create something that explains some of these concepts. The target requirements I felt were 
       important to maximise value and minimise complexity were the following:</p>
@@ -83,7 +82,7 @@ export default (<div>
       transferring information in order to minimise ambiguity!</p>
 
       <p>It must be said that there are already some great resources out there for teaching people about these types of complex subject 
-      matter with visual cues and I have taken inspiration from two in particular:</p>
+      matter with visual cues. I have taken inspiration from two in particular:</p>
 
       <ol>
             <li><a href="http://visualgo.net/">Visualgo</a> - a very comprehensive resource for the visualisation 
