@@ -117,7 +117,7 @@ export default (<div>
         <i className="fa fa-heart" aria-hidden="true"></i> 
         <span>
           by <a href='https://www.workshape.io'>
-            <img src='/assets/ws-logo.svg' alt='WorkShape.io' />
+            <img src='assets/ws-logo.svg' alt='WorkShape.io' />
           </a>
         </span>
       </div>
