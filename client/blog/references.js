@@ -3,7 +3,7 @@ import ShareButtons from '../components/ShareButtons';
 
 export default (<div>
       <p>The real world uses of testing whether a graph is bipartite, but it is a good introduction to the topic of 
-      <a href="https://en.wikipedia.org/wiki/Graph_coloring">Graph Coloring</a>which is an interesting area of study.</p>
+      <a href="https://en.wikipedia.org/wiki/Graph_coloring"> Graph Coloring</a> which is an interesting area of study.</p>
 
       <h4><a name='bp-pseudocode'>Pseudocode</a></h4>
       <p>This algorithm, because it is an extension of BFS, uses a queue to maintain which node to visit next. For each 

@@ -2,12 +2,26 @@
 
 .BlogHeading
   background lighten(color-code-bg, 10)
-  height 100 vh
+  height 100vh
   position relative
   background-image url(/assets/cover-noise.png)
   background-size 150px 150px
   min-height 500px
   font-family 'Open Sans', Arial, sans-serif
+  background-attachment fixed
+
+  &:after
+    content ''
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    background-image url(/assets/hexa-pattern.png)
+    background-size 33px 39px
+    opacity .2
+    background-attachment fixed
+    mix-blend-mode multiply
 
   .inner
     position absolute
@@ -15,6 +29,7 @@
     top 50%
     transform translateY(-50%)
     text-align center
+    z-index 1
 
     @media screen and (max-width breakpoint-medium)
       margin-top (menu-width / 2)
