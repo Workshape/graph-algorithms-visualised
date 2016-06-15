@@ -21,7 +21,7 @@ function facebookShare() {
 
 function buildTwitterUrl(options) {
   return [
-    `https://twitter.com/intent/tweet?tw_p=tweetbutton&hashtags=Workshape`,
+    `https://twitter.com/intent/tweet?tw_p=tweetbutton`,
     `&url=${encodeURI(options.url)}`,
     `&text=${options.text}`
   ].join('');
