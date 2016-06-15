@@ -10,7 +10,6 @@ body
 
   @media screen and (max-width breakpoint-medium)
     padding-left 0
-    padding-top menu-width
 
 a
   color #1d9fcf
@@ -57,7 +56,7 @@ h1, h2, h3, h4
     margin-top 2px
 
     &.disabled, &.button-disabled
-      background color-code-bg
+      background #1695c5
       opacity .3
 
     &.button-primary
@@ -99,6 +98,9 @@ h1, h2, h3, h4
     top 50%
     transform translateY(-50%)
     text-align center
+
+    @media screen and (max-width breakpoint-medium)
+      margin-top (menu-width / 2)
 
     a
       color #fff
