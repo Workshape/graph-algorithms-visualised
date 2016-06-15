@@ -5,6 +5,8 @@
   left 0
   top 0
   background-color #286176
+  background-image url(/assets/darker-noise.png)
+  background-size 150px 150px
   color #fff
   z-index 999
   transition all 0.5s
@@ -13,15 +15,14 @@
   .Controls
     position relative
     font-size 1rem
-    margin 10px
     cursor pointer
-    padding-left (menu-width - 20px)
+    padding-left menu-width
 
     &:before 
       content ""
       position absolute
-      top 7px
-      left 7px
+      top 17px
+      left 17px
       width 25px
       height 4px
       border-top 12px double #fff
@@ -43,19 +44,26 @@
     background-position center center
     display none
 
-  &.closed .logo
-    display block
+  &.closed
+
+    .logo
+      display block
+
+    .BuiltBy
+      pointer-events none
 
   .Menu
     padding 20px
-    width 20vw
-    height 90vh
+    width 22vw
+    height 84.5vh
     overflow scroll
     transition width 0.5s, margin 0.5s
-    
-    li
+
+    li li
       font-size 0.9rem
-  
+      opacity .6
+      font-weight 100
+
   .BuiltBy
     text-align center
     font-weight 100
@@ -64,20 +72,24 @@
     height 10vh
     transition height 0.5s, margin 0.5s, opacity 0.1s
     font-size 17px
+    padding-top 30px
+    background rgba(#fff, .05)
 
     span, i
       margin 2px
-    
+
     span
       color: #fff
-      
+
     a, i
       color lighten(color-workshape, 15)
-      
+
   &.closed
+
     .Menu, 
       overflow hidden
       margin-left -600px
+
     .BuiltBy
       opacity 0
       margin-left -600px
@@ -91,8 +103,14 @@
       top 10px
       display block
 
-    &.closed .Controls:before
-      border-color black
+    &.closed .Controls
+      background #fff
+      box-shadow rgba(#000, .1) 0 2px 2px
+      width 100%
+      height menu-width
+
+      &:before
+        border-color rgba(color-code-bg, .8)
 
     &.closed .logo
       background-image url(/assets/logotype-color.svg)
