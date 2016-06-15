@@ -2,18 +2,18 @@ import React from 'react';
 
 import './ShareButtons.styl';
 
-function twitterShare(path = '', text = null, tags = null) {
-  tags = tags || [ 'workshape' ];
-  text = text || 'Check out Graph Algorithms - A Visual Guide to Graph Traversal Algorithms by Workshape.io';
+function twitterShare() {
+  var tags = [ 'workshape' ],
+    text = 'Check out Graph Algorithms - A Visual Guide to Graph Traversal Algorithms by Workshape.io';
 
-  let url = `http://workshape.github.io/visual-graph-algorithms/${path}`,
+  let url = `http://workshape.github.io/visual-graph-algorithms`,
     twitterUrl = buildTwitterUrl({ url, text, tags });
 
   openModal(twitterUrl, 'Tweet', 700, 260);
 }
 
-function facebookShare(path = '') {
-  let url = `http://workshape.github.io/visual-graph-algorithms/${path}`,
+function facebookShare() {
+  let url = `http://workshape.github.io/visual-graph-algorithms`,
     facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
 
   openModal(facebookUrl, 'Share', 560, 610);
