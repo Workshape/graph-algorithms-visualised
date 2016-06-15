@@ -11,13 +11,6 @@ body
   @media screen and (max-width breakpoint-medium)
     padding-left 0
 
-.illustration-intro
-  margin auto
-  display block
-  width 250px
-  max-width 100%
-  margin-bottom -20px
-
 a
   color #1d9fcf
   text-decoration none
@@ -89,3 +82,46 @@ h1, h2, h3, h4
 
   i
     margin 0 5px
+
+.page-title
+  background lighten(color-code-bg, 10)
+  height 100 vh
+  position relative
+  background-image url(/assets/cover-noise.png)
+  background-size 150px 150px
+  min-height 500px
+  font-family 'Open Sans', Arial, sans-serif
+
+  .inner
+    position absolute
+    width 100%
+    top 50%
+    transform translateY(-50%)
+    text-align center
+
+    a
+      color #fff
+      // font-weight 100
+      text-shadow rgba(#000, .2) 0 1px 1px
+      font-weight 100
+      font-size 23px
+
+      .bottom
+        display block
+        font-weight normal
+        font-size 40px
+
+  .illustration-intro
+    margin auto
+    display block
+    width 320px
+    max-width 100%
+
+  .made-by
+    color rgba(#fff, .7)
+    font-weight 100
+    margin-top 30px
+
+    img
+      vertical-align middle
+      height 20px
