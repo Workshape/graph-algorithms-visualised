@@ -49,6 +49,7 @@ export default class PlotContainer extends Component {
 
     let svg = d3.select(`.PlotContainer#plot${self.props.id}`)
       .append('svg')
+      .attr('viewBox', '0 0 450 300')
       .classed('done', self.props.done)
       .on('click', function() { // We need this context, cant use ES6 anonymous function
         if (d3.event.defaultPrevented) return;

@@ -2,7 +2,7 @@
 
 .BlogContainer
   display block
-  max-width 1100px
+  max-width 900px
   margin: 50px auto
   font-family: 'Libre Baskerville', serif;
   
@@ -14,16 +14,20 @@
   p
     display block
     margin 40px 0
-    line-height 2rem
+    line-height 30px
+    color #666
+    font-size 18px
     
   .instruction
     padding 15px 15px
     border-radius 4px
     text-align center
-    background-color lighten(color-light-grey, 3)
+    background-color darken(color-light-grey, 2)
     
     h4
       margin 10px
+      font-size 25px
+      color #333
     
     p
       margin 10px
@@ -42,8 +46,9 @@
   code
     display block
     border-radius 4px
-    border 1px color-light-grey solid 
-    background-color lighten(color-light-grey, 5)
+    // background-color lighten(color-light-grey, 5)
+    background-color color-code-bg
+    color #fff
     line-height 1.5rem
     margin 20px
     padding 20px

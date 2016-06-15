@@ -3,38 +3,38 @@
 .PlotContainer
     width 55vw
     height component-height
-    margin 5vh 5vw
-    
+    // margin 5vh 5vw
+
     svg
+      // border-radius 3px
       width 100%
       height 100%
-      border solid 1px color-grey
       background-color color-white
-      
+
       &.done
         .Edge
           stroke lighten(color-light-blue, 10)
-          
+
         .ArrowHead
           path
             fill lighten(color-light-blue, 10)
-            
+
         .Node
             fill lighten(color-light-blue, 10)
-      
+
       .Node
         fill darken(color-light-blue, 10)
-        
+
         &.selected
           stroke darken(color-light-blue, 50)
           stroke-width 1
-        
+
         &.visited
           fill color-grey
-        
+
         &.current
           fill darken(color-grey, 20)
-        
+
         &.articulationPoint
           fill lighten(color-red, 20)
 
@@ -42,22 +42,26 @@
           stroke darken(color-light-blue, 50)
           stroke-width 2
           cursor e-resize
-          
+
         &.group-1
           fill #44ccaa
+
         &.group-2
           fill #339988
+
         &.group-3
           fill #88eedd
+
         &.group-4
           fill #88ccbb
+
         &.group-5
           fill #33ccbb
-          
+
       .ArrowHead
         path
           fill darken(color-light-blue, 20)
-          
+
         &.traversed
           path
             fill color-grey
@@ -65,40 +69,38 @@
       .Node-label
         font-size 10px
         fill #cdcdcd
-      
+
       .Node-visitLabel
         font-size 10px
-        fill color-red
-      
+        fill darken(color-red, 20)
+
       .Edge
         stroke darken(color-light-blue, 20)
         stroke-width 1
-        
+
         &.dragging
           stroke lighten(color-light-blue, 5)
-        
-        
+
         &.traversed
           stroke color-grey
           z-index 99
-        
+
         &.not-traversed
           opacity 0.3
-        
+
         &:hover
           stroke darken(color-light-blue, 50)
-      
+
       .GraphComponent-circle
         fill lighten(color-grey, 20)
         opacity 0.4
-          
+
       .GraphComponent-poly
         stroke-width 40
         stroke-linejoin round
         stroke lighten(color-grey, 20)
         fill lighten(color-grey, 20)
         opacity 0.4
-        
+
     @media screen and (max-width: breakpoint-small)
-      width 90vw
-        
+      width 100vw

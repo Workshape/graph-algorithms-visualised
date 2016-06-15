@@ -6,32 +6,20 @@
   justify-content space-between
   width 100vw
   height 40px
-  background-color alpha(color-black, 0.2)
-  border-bottom 1px solid color-grey
-  
+  background-color #31bcf0
+  color #fff
+
   h1, form
     display inline-block
-  
+
   h1
-    color color-black
-    margin-top 3px
     font-size 1.7rem
-    
+    font-weight 100
+
   label, button, select
     margin 4px 6px 10px 6px
     font-size 0.9rem
-  
-  button
-    
-    &.button-disabled
-      background-color color-grey
-    
-    &.button-primary
-      background-color darken(color-light-blue,20)
-    
-    &.button-secondary
-      background-color lighten(color-red, 20)
-      
+
   @media screen and (max-width: breakpoint-large)
     h1
       margin-top 8px
@@ -63,6 +51,3 @@
       font-size 0.8rem
     select.start-node, label.start-node, label.algorithm
       display none
-  
-
-    

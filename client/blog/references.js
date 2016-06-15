@@ -106,8 +106,18 @@ export default (<div>
       </ol>
 
       <div className='instruction'>
-            <h4>Feedback</h4>
-            <p>If you have any feedback and would like to share it, or if you see any errors please email Gordon at gordon [at] workshape [dot] io. Also, if you would be interested in
-            contributing in further content like this please do get in touch!</p>
-            </div>
+        <h4>Feedback</h4>
+        <p>If you have any feedback and would like to share it, or if you see any errors please email Gordon at gordon [at] workshape [dot] io. Also, if you would be interested in
+        contributing in further content like this please do get in touch!</p>
+      </div>
+
+      <div className='BuiltBy large'>
+        <span>Made with</span>
+        <i className="fa fa-heart" aria-hidden="true"></i> 
+        <span>
+          by <a href='https://www.workshape.io'>
+            <img src='/assets/ws-logo.svg' alt='WorkShape.io' />
+          </a>
+        </span>
+      </div>
 </div>);

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default (<div>
+      <img src='/assets/illustration-top.svg' className='illustration-intro' />
       <h1><a name='top'>A Visual Guide to Graph Traversal Algorithms</a></h1>
       <h2><a name='introduction'>Introduction</a></h2>
       <p>Graph Traversal Algorithms are a key topic of study in Computer Science and lay a foundation for

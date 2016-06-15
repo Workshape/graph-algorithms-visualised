@@ -4,34 +4,48 @@
   position fixed
   left 0
   top 0
-  background-color darken(color-white, 1)
-  border-right 1px solid color-grey
+  background-color #286176
+  color #fff
   z-index 999
   transition all 0.5s
-  font-family 'Noto Sans', Arial, sans-serif
-  
+  font-family 'Open Sans', Arial, sans-serif
+
   .Controls
     position relative
     font-size 1rem
     margin 10px
     cursor pointer
-    padding-left 1.25em
-  
+    padding-left (menu-width - 20px)
+
     &:before 
       content ""
       position absolute
-      top 0.25em
-      left 0
-      width 1em
-      height 0.125em
-      border-top 0.375em double color-grey
-      border-bottom 0.125em solid color-grey
-    
+      top 7px
+      left 7px
+      width 25px
+      height 4px
+      border-top 12px double #fff
+      border-bottom 4px solid #fff
+
     &:hover
       &:before
-        border-top 0.375em double darken(color-grey, 10)
-        border-bottom 0.125em solid darken(color-grey, 10)
-  
+        opacity .8
+
+  .logo
+    width 40px
+    height 40px
+    position fixed
+    bottom 10px
+    left 10px
+    background-image url(/assets/logotype-white.svg)
+    background-size contain
+    background-repeat no-repeat
+    background-position center center
+    display none
+
+  &.closed .logo
+    display block
+
   .Menu
     padding 20px
     width 20vw
@@ -49,18 +63,16 @@
     width 100%
     height 10vh
     transition height 0.5s, margin 0.5s, opacity 0.1s
-    
-    a
-      color color-workshape
-    
+    font-size 17px
+
     span, i
       margin 2px
     
     span
-      color darken(color-grey, 15)
+      color: #fff
       
-    i 
-      color lighten(color-red, 10)
+    a, i
+      color lighten(color-workshape, 15)
       
   &.closed
     .Menu, 
@@ -71,6 +83,20 @@
       margin-left -600px
   
   @media screen and (max-width breakpoint-medium)
+
+    .logo
+      left auto
+      right 20px
+      bottom auto
+      top 10px
+      display block
+
+    &.closed .Controls:before
+      border-color black
+
+    &.closed .logo
+      background-image url(/assets/logotype-color.svg)
+
     .Menu
       width 100vw
       transition height 0.5s, margin 0.5s, opacity 0.3s
