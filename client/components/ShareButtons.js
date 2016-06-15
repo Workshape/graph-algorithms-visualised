@@ -4,7 +4,7 @@ import './ShareButtons.styl';
 
 function twitterShare() {
   var tags = [ 'workshape' ],
-    text = 'Check out Graph Algorithms - A Visual Guide to Graph Traversal Algorithms by Workshape.io';
+    text = 'A Visual Guide to Graph Traversal Algorithms by Workshape.io';
 
   let url = `http://workshape.github.io/visual-graph-algorithms`,
     twitterUrl = buildTwitterUrl({ url, text, tags });
