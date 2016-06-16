@@ -76,8 +76,14 @@ function getScreenSize() {
 
 const ShareButtons = (props) => {
   return <div className='ShareButtons'>
-    <button className='pure-button button-twitter' onClick={twitterShare}>Tweet</button>
-    <button className='pure-button button-facebook' onClick={facebookShare}>Share</button>
+    <button className='pure-button button-twitter' onClick={twitterShare}>
+        <i className='icon-twitter'></i>&nbsp;
+        Tweet
+    </button>
+    <button className='pure-button button-facebook' onClick={facebookShare}>
+        <i className='icon-facebook'></i>&nbsp;
+        Share
+    </button>
   </div>;
 };
 
