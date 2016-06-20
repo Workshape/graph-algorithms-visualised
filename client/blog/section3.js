@@ -5,8 +5,8 @@ export default (<div>
       It is important to take note of this when comparing to Breadth First Search. The visit index of each node is labelled in red.</p>
 
       <h3><a name='dfs-pseudocode'>Pseudocode</a></h3>
-      <p>This pseudocode encapsulates the main principle of BFS using a queue to store nodes that are ready to be visited
-      process and recursive function calls visit all reachable nodes.</p>
+      <p>This pseudocode encapsulates the main principle of DFS using a stack and recursive function calls to explore down a pathway to a leaf node before
+      backtracking, using a stack, and looking for other routes to other unvisited children.</p>
       <code>
             function <strong>dfs</strong>( graph, node )<br/>
             &nbsp;&nbsp;stack = new Stack()<br/>

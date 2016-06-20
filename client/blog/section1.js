@@ -12,11 +12,9 @@ export default (<div>
       for various software engineers roles we thought it would be a good idea to experiment on building a resource 
       to help anyone understand how some of these algorithms work.</p>
 
-      <p>In this blog we look at Depth First Search plus Breadth First Search. This blog is interactive and 
-      readers can use the visualisations inside this blog to see how the algorithms can be applied to search
-      graphs and solve certain problems. Each of the visualisations are interactive and users can run the 
-      algorithms against various examples, or they can draw their own graphs to gain a better understand of how
-      they work.</p>
+      <p>In this blog we look at Depth First Search plus Breadth First Search. This resource is interactive and 
+      readers can use the visualisations to see how the algorithms can be applied to search
+      graphs and solve certain problems. You can run it against various examples or they can draw your own graphs.</p>
 
       <div className='instruction'>
       <h4>Creating your own graph</h4>
