@@ -35,7 +35,7 @@ export default class PlotContainer extends Component {
   }
 
   getDimensions() {
-    var svgElem = d3.select('.PlotContainer').node();
+    let svgElem = d3.select('.PlotContainer').node();
     return {
       x: svgElem.clientWidth,
       y: svgElem.clientHeight
@@ -115,7 +115,7 @@ export default class PlotContainer extends Component {
         .attr('cy', node.y)
         .attr('r', 20);
     } else {
-      var points = component.map((c) => {
+      let points = component.map((c) => {
           let node = this.props.nodes.find((n) => n.id === c);
           return [node.x, node.y].join(',');
       }).join(' ');
@@ -133,7 +133,7 @@ export default class PlotContainer extends Component {
     node.children.forEach((childId) => {
       let child = self.props.nodes.find((n) => n.id === childId);
 
-      var markerId = (child.visitedFrom === node.id) ? '#arrowhead-traversed': '#arrowhead';
+      let markerId = (child.visitedFrom === node.id) ? '#arrowhead-traversed': '#arrowhead';
 
 
       svg.append('line')
@@ -172,37 +172,45 @@ export default class PlotContainer extends Component {
           .attr('y2', node.y);
       })
       .on('drag', function(d) {
-        var draggedLine = d3.select(`.PlotContainer#plot${self.props.id} svg .Edge.dragging`);
+        let draggedLine = d3.select(`.PlotContainer#plot${self.props.id} svg .Edge.dragging`);
+        let x2 = d3.event.sourceEvent.offsetX - node.size;
+        let y2 = d3.event.sourceEvent.offsetY - node.size;
+        let target = d3.event.sourceEvent.target;
+
+        if (target.tagName === 'circle') {
+          x2 = d3.select(`#${target.id}`).attr('cx');
+          y2 = d3.select(`#${target.id}`).attr('cy');
+        }
 
         draggedLine
           .attr('marker-end', 'url(#arrowhead-dragging)')
           .attr('x1', node.x)
           .attr('y1', node.y)
-          .attr('x2', d3.event.sourceEvent.offsetX - node.size)
-          .attr('y2', d3.event.sourceEvent.offsetY - node.size);
+          .attr('x2', x2)
+          .attr('y2', y2);
       })
       .on('dragend', function(d) {
+        let target = d3.event.sourceEvent.target;
+        let connectId;
+
         d3.event.sourceEvent.stopPropagation();
         d3.selectAll(`.PlotContainer#plot${self.props.id} svg .Edge.dragging`).remove();
 
-        let { offsetX: x, offsetY: y } = d3.event.sourceEvent;
-        let connect = self.props.nodes.find((node) => {
-          return (
-            Math.abs(node.x - x) < node.size &&
-            Math.abs(node.y - y) < node.size);
-        });
+        if (target.tagName === 'circle') {
+          connectId = parseInt(target.id.substring(5));
+        }
 
-        if (connect && connect.id !== node.id && node.children.filter((c) => c === connect.id).length === 0) {
+        if (connectId && connectId !== node.id && node.children.filter((c) => c === connectId).length === 0) {
           self.props.updateNodes(self.props.nodes.map((n) => {
             if (n.id === node.id) {
               n.selected = false;
-              n.children.push(connect.id);
+              n.children.push(connectId);
               if (self.props.graphType === 'undirected') {
-                n.parents.push(connect.id);
+                n.parents.push(connectId);
               }
             }
 
-            if (n.id === connect.id) {
+            if (n.id === connectId) {
               n.parents.push(node.id);
               if (self.props.graphType === 'undirected') {
                 n.children.push(node.id);
