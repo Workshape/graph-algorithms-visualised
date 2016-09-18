@@ -1,3 +1,3 @@
-## Football Team Builder
+## Graph Algorithms Visualised
 
-A weekend project to familiarise myself with the [React drag and drop API](https://github.com/gaearon/react-dnd)
+Source code for our blog post A visual guide to [Graph Traversal Algorithms](https://workshape.github.io/visual-graph-algorithms/).
