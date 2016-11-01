@@ -7,7 +7,7 @@ export default (<div>
 
       <h4><a name='bp-pseudocode'>Pseudocode</a></h4>
       <p>This algorithm, because it is an extension of BFS, uses a queue to maintain which node to visit next. For each 
-      node it assigns a color based upon the colour(s) assigned to it's parents. Once all nodes have been assigned a color
+      node it assigns a color based upon the colour(s) assigned to its parents. Once all nodes have been assigned a color
       if we end with using 2 colours, then the graph is bipartite and its nodes can be seperated into two disjoint sets.</p>
       <code>
             function <strong>bipartiteness</strong>( graph )<br/>
