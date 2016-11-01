@@ -2,13 +2,13 @@ import React from 'react';
 import ShareButtons from '../components/ShareButtons';
 
 export default (<div>
-      <p>The real world uses of testing whether a graph is bipartite, but it is a good introduction to the topic of 
-      <a href="https://en.wikipedia.org/wiki/Graph_coloring"> Graph Coloring</a> which is an interesting area of study.</p>
+      <p>Testing whether a graph is bipartite is a good introduction to the topic of 
+      <a href="https://en.wikipedia.org/wiki/Graph_coloring"> Graph Coloring</a>, which is an interesting area of study.</p>
 
       <h4><a name='bp-pseudocode'>Pseudocode</a></h4>
       <p>This algorithm, because it is an extension of BFS, uses a queue to maintain which node to visit next. For each 
-      node it assigns a color based upon the colour(s) assigned to it's parents. Once all nodes have been assigned a color
-      if we end with using 2 colours, then the graph is bipartite and its nodes can be seperated into two disjoint sets.</p>
+      node it assigns a color based upon the colour(s) assigned to its parents. Once all nodes have been assigned a color
+      if we end with using 2 colours, then the graph is bipartite and its nodes can be separated into two disjoint sets.</p>
       <code>
             function <strong>bipartiteness</strong>( graph )<br/>
             &nbsp;&nbsp;queue = new Queue()<br/>
@@ -65,20 +65,20 @@ export default (<div>
 
       <ul>
             <li>Visual - visually show the steps of the algorithm and how it traverses the graph</li>
-            <li>Interactive - user can easily, and intuitively draw their own graphs and trees and run an algorithm 
+            <li>Interactive - user can easily and intuitively draw their own graphs and trees and run an algorithm 
             against it</li>
             <li>Examples - Access to pre-defined graphs relevant to each algorithm</li>
-            <li>Running Commentary - Display the output of the algorithm at it runs</li>
+            <li>Running Commentary - Display the output of the algorithm as it runs</li>
             <li>Minimal - users can just click run to see the algorithms run and their output</li>
       </ul>
 
       <p>This blog marks the beginning. I've decided to focus on the topic of graph search algorithms here. The hope is 
       that anyone that is struggling with these algorithms and their applications can gain a better understanding 
-      through running the algorithm and its variations with their own graphs and trees. </p>
+      through running the algorithm and its variations with their own graphs and trees.</p>
 
       <p>By enabling readers to test out an algorithm with their own graph/tree structures I believe the reader can 
       learn and grok the concepts more efficiently. In many ways this reflects the intentions 
-      of <a href="https://www.workshape.io">Workshape</a>, in so far as, we try to limit the dependence of words when 
+      of <a href="https://www.workshape.io">Workshape</a>, insofar as we try to limit the dependence of words when 
       transferring information in order to minimise ambiguity!</p>
 
       <p>It must be said that there are already some great resources out there for teaching people about these types of complex subject 

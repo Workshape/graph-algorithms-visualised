@@ -12,10 +12,10 @@ export default (<div>
       </ul>
       <h4><a name='tscc-pseudocode'>Pseudocode</a></h4>
       <p>This algorithm builds upon DFS using a stack and recursion to explore a pathway until it finds a leaf node or 
-      a node already visisted. Unlike DFS though this algorithm does not take a start point, instead it ensures all 
+      a node already visisted. Unlike DFS this algorithm does not take a start point, instead it ensures all 
       nodes are visited by instigating search on all nodes. At the end of each search cycle if the value of 
       node.visitIndex is the same as node.lowLink then it creates a new SCC and iteratively pops from the stack and adds
-      these nodes to the SCC too until it reaches itself again.</p>
+      these nodes to the new SCC until it reaches itself again.</p>
 
       <code>
             function <strong>tarjan-scc</strong>( graph )<br/>
@@ -56,17 +56,16 @@ export default (<div>
       <h3><a name='bc'>Identifying if a Graph is Biconnected</a></h3>
       <p>A graph is <a href="https://en.wikipedia.org/wiki/Biconnected_component">biconnected</a> if any node can be 
       removed and yet the graph remains connected (all nodes can still be reached from all other nodes). The key to 
-      identifying is a graph is biconnected or not, is by searching for the presence of articulation points, or cut 
-      vertices. These are points, that if removed from a graph results in an increase in the number of connected components
-      within a graph and basically means that without their presence all remaining nodes would not be reachable from one 
-      another.</p>
+      identifying is a graph is biconnected, is by searching for the presence of articulation points, or cut 
+      vertices. These are points that, if removed from a graph, would cause an increase to the number of connected components
+      within a graph. Without their presence all remaining nodes would not be reachable from one another.</p>
 
       <p>The most basic way to search for articulation points in a graph is to take a brute force approach and play out 
-      all scenerios. Each node is removed from the graph and we then see if remaining nodes are all connected, if they 
+      all scenarios. Each node is removed from the graph and we then see if remaining nodes are all connected, if they 
       are not then the node that was removed is an articulation point. We place the removed node back in and then repeat
       the process for all remaining nodes.</p>
 
       <p>Whilst this approach will works its time complexity is relatively inefficient at O(N^2). There is an 
-      alternative though that is an extension of DFS that's time complexity is  O(N). This algorithm is demonstrated 
+      alternative though that is an extension of DFS that has a time complexity of O(N). This algorithm is demonstrated 
       in the visualisation below.</p>
 </div>);

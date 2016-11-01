@@ -138,7 +138,7 @@ export default class ArticulationPointSearch {
                 node.articulationPoint = true;
               } else if (node.visitedFrom !== null && child.lowLink >= node.visitIndex) {
                 this.log(` | Node ${node.id} - parent ${node.visitedFrom}`);
-                this.log(' | Node is not root but one of it\'s children has a back link to an ancestor - it\'s an articulation point!');
+                this.log(' | Node is not root but one of its children has a back link to an ancestor - it\'s an articulation point!');
                 node.articulationPoint = true;
               }
             });

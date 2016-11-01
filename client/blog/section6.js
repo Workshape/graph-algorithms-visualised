@@ -55,7 +55,7 @@ export default (<div>
       in an unweighted graph. You can see this behaviour by running the BFS example. In this blog we'll explore one 
       other application of BFS, using it to test if a graph is bipartite or not.</p>
 
-      <h3><a name='bp'>Identifying is a Graph is Bipartite</a></h3>
+      <h3><a name='bp'>Identifying if a Graph is Bipartite</a></h3>
       <p>A graph is bipartite if its nodes can be put into two disjoint sets such that every node in the first set 
       connects to one or more in the second. If you check out the visualisation below you can see a variation of BFS 
       that has been applied to see if a graph can be broken into these two disjoint sets. When a node is visited it is 
@@ -63,8 +63,8 @@ export default (<div>
       </p>
       <ul>
             <li>it it has no parents, it'll be set to color 1</li> 
-            <li>if all it's parents have the same color, it will be set to the alternate of that color</li>
-            <li>if it's parents have differing colors, it will be set a new color</li>
+            <li>if all its parents have the same color, it will be set to the alternate of that color</li>
+            <li>if its parents have differing colors, it will be set a new color</li>
       </ul>
 
       <p>At the end of the process if only 2 colors are used then the graph is bipartite.</p>
