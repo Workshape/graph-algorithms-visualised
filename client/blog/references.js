@@ -89,7 +89,7 @@ export default (<div>
             of algorithms and data structures. Kudos to the team behind this.</li>
             <li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">A Visual Introduction to 
             Machine Learning</a> - a personal favourite that tells the story of how various statistical techniques 
-            can be used to build models to make predictions to classifcation problems - the visual explanation is 
+            can be used to build models to make predictions to classification problems - the visual explanation is 
             triggered by scrolling!</li>
       </ol>
 
